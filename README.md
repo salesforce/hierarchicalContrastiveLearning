@@ -1,1 +1,9 @@
 # hierarchicalContrastiveLearning
+This repo converes an reference implementation for the follwing paper in PyTorch, using Deep Fashion In-Store as an illustrative example:
+Use All The Labels: A Hierarchical Multi-Label Contrastive Learning Framework.
+
+## Running
+```
+python train_deepfashion.py --data ./deepfashion/ --train-listfile ./train_listfile.json --val-listfile ./val_listfile.json --class-map-file ./classmap.json --num-classes 17 --feature-extract --learning_rate 0.9 --temp 0.1
+
+```
