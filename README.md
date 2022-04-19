@@ -10,25 +10,26 @@ Use All The Labels: A Hierarchical Multi-Label Contrastive Learning Framework.
 * This code is built upon two codebases: [Supervised Contrastive Learning](https://github.com/HobbitLong/SupContrast) and [MoCo](https://github.com/facebookresearch/moco).
 * Train pre-trained model on Deep Fashion In-store dataset
 	* Perpare train-listfile, val-listfile. The format is as follows:
-```
-{
-  "images": [
-    "/deep_fashion_in_store/img/WOMEN/Dresses/id_00000002/02_1_front.jpg",
-    "/deep_fashion_in_store/img/WOMEN/Dresses/id_00000002/02_2_side.jpg",
-    "/deep_fashion_in_store/img/WOMEN/Dresses/id_00000002/02_4_full.jpg",
-    "/deep_fashion_in_store/img/WOMEN/Dresses/id_00000002/02_7_additional.jpg",
-    "/deep_fashion_in_store/img/WOMEN/Blouses_Shirts/id_00000004/03_1_front.jpg"
-  ],
-  "categories": [
-    "Dresses",
-    "Dresses",
-    "Dresses",
-    "Dresses",
-    "Blouses_Shirts"
-  ]
-}
+	```
+	{
+	  "images": [
+	    "/deep_fashion_in_store/img/WOMEN/Dresses/id_00000002/02_1_front.jpg",
+	    "/deep_fashion_in_store/img/WOMEN/Dresses/id_00000002/02_2_side.jpg",
+	    "/deep_fashion_in_store/img/WOMEN/Dresses/id_00000002/02_4_full.jpg",
+	    "/deep_fashion_in_store/img/WOMEN/Dresses/id_00000002/02_7_additional.jpg",
+	    "/deep_fashion_in_store/img/WOMEN/Blouses_Shirts/id_00000004/03_1_front.jpg"
+	  ],
+	  "categories": [
+	    "Dresses",
+	    "Dresses",
+	    "Dresses",
+	    "Dresses",
+	    "Blouses_Shirts"
+	  ]
+	}
 
-```
+	```
+	
 	* Class map can be downloaded from [class_map.json](https://drive.google.com/file/d/19q9NnnCieycgfsLI-iQCdTu82oDRZTAO/view)
 	* Repeating product ids can be downloaded from [repeating_product_ids.csv](https://drive.google.com/file/d/1oFZfmZNTQNkPOiyIc_4b_g3qIXDvTmv4/view?usp=sharing)
 	* If experiment on the model transfer ability from seen classes to unseen classes, the two classes maps can be downloaded from [class_map_seen.json](https://drive.google.com/file/d/19q9NnnCieycgfsLI-iQCdTu82oDRZTAO/view?usp=sharing) and [class_map_unseen.json](https://drive.google.com/file/d/15PEcgP15PC-1m6DAmEwiFnTDzGovzoRD/view?usp=sharing).
