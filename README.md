@@ -33,11 +33,34 @@ Use All The Labels: A Hierarchical Multi-Label Contrastive Learning Framework.
 	* Class map can be downloaded from [class_map.json](https://drive.google.com/file/d/19q9NnnCieycgfsLI-iQCdTu82oDRZTAO/view)
 	* Repeating product ids can be downloaded from [repeating_product_ids.csv](https://drive.google.com/file/d/1oFZfmZNTQNkPOiyIc_4b_g3qIXDvTmv4/view?usp=sharing)
 	* If experiment on the model transfer ability from seen classes to unseen classes, the two classes maps can be downloaded from [class_map_seen.json](https://drive.google.com/file/d/19q9NnnCieycgfsLI-iQCdTu82oDRZTAO/view?usp=sharing) and [class_map_unseen.json](https://drive.google.com/file/d/15PEcgP15PC-1m6DAmEwiFnTDzGovzoRD/view?usp=sharing).
-```
-python train_deepfashion.py --data ./deepfashion/ 
---train-listfile ./train_listfile.json --val-listfile ./val_listfile.json --class-map-file ./classmap.json --num-classes 17 --feature-extract --learning_rate 0.9 --temp 0.1
 
-```
+	* To train the model on Deep Fashion In-store dataset, run
+
+	```
+	python train_deepfashion.py --data ./deepfashion/ 
+	--train-listfile ./train_listfile.json 
+	--val-listfile ./val_listfile.json 
+	--test-listfile ./test_listfile.json 
+	--class-map-file ./classmap.json 
+	--num-classes 17 
+	--learning_rate 0.5 --temp 0.1
+	--ckpt /pretrained_model/
+	--dist-url 'tcp://localhost:10001' 
+	--multiprocessing-distributed 
+	--world-size 1 --rank 0 --cosine
+
+	```
+
+	* To evaluate the model, run
+	```
+	python eval_deepfashion.py --data ./deepfashion/ 
+	--train-listfile ./train_listfile.json --val-listfile ./val_listfile.json 
+	--class-map-file ./classmap.json 
+	--num-classes 17 
+	--learning_rate 0.5 --temp 0.1
+	--ckpt /trained_model/
+
+	```
 
 ## Reference
 ```

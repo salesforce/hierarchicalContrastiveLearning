@@ -117,7 +117,7 @@ def parse_option():
     for it in iterations:
         args.lr_decay_epochs.append(int(it))
     # warm-up for large-batch training,
-    if args.batch_size > 256:
+    if args.batch_size >= 256:
         args.warm = True
     if args.warm:
         args.model_name = '{}_warm'.format(args.model)
@@ -239,12 +239,17 @@ def set_model(ngpus_per_node, args):
 
     # This part is to load a pretrained model
     ckpt = torch.load(args.ckpt, map_location='cpu')
-    state_dict = ckpt['state_dict']
+    # state_dict = ckpt['state_dict']
+    state_dict = ckpt['model']
     model_dict = model.state_dict()
     new_state_dict = {}
+    # for k, v in state_dict.items():
+    #     if not k.startswith('module.encoder_q.fc'):
+    #         k = k.replace('module.encoder_q', 'encoder')
+    #         new_state_dict[k] = v
     for k, v in state_dict.items():
-        if not k.startswith('module.encoder_q.fc'):
-            k = k.replace('module.encoder_q', 'encoder')
+        if not k.startswith('module.head'):
+            k = k.replace('module.encoder', 'encoder')
             new_state_dict[k] = v
     state_dict = new_state_dict
     model_dict.update(state_dict)
@@ -483,6 +488,8 @@ def set_parameter_requires_grad(model, feature_extracting):
         #     param.requires_grad = True
         for name, param in model.module.named_parameters():
             if name.startswith('encoder.layer4'):
+                param.requires_grad = True
+            elif name.startswith('encoder.layer3'):
                 param.requires_grad = True
             elif name.startswith('head'):
                 param.requires_grad = True
