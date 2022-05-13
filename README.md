@@ -6,6 +6,10 @@ Use All The Labels: A Hierarchical Multi-Label Contrastive Learning Framework.
 * Pytorch 1.7.0
 * tensorboard_logger 0.1.0
 
+## Typo
+* We want to correct a typo in the paper. 
+In Eq. 6 and 7, <img src="https://render.githubusercontent.com/render/math?math=l%2d%201"> should be <img src="https://render.githubusercontent.com/render/math?math=l%2b%201">.
+
 ## Running
 * This code is built upon two codebases: [Supervised Contrastive Learning](https://github.com/HobbitLong/SupContrast) and [MoCo](https://github.com/facebookresearch/moco).
 * Train pre-trained model on Deep Fashion In-store dataset
